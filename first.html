@@ -1,0 +1,172 @@
+
+
+<!DOCTYPE html>
+
+
+
+<!--[if IE 8]>         <html id="join-page" class="no-js-mode lt-ie9"> <![endif]-->
+<!--[if IE 9]>         <html id="join-page" class="no-js-mode lt-ie10"> <![endif]-->
+<!--[if gt IE 9]><!--> <html id="join-page" class="no-js-mode"> <!--<![endif]-->
+
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!--[if IE]>
+		<script>
+			/*
+			 * The backend misses this condition; IE8 in compatibility mode slips through even though it doesn't work.
+			 * IE8 in compatibility mode will have document.documentMode set to 7. In that case, we redirect to the Launcher Page.
+			 */
+			if (document && document.documentMode && document.documentMode < 8) {
+				window.location.href = 'https://download.citrixonline.com/download.html?brokerServiceSuffix=@ISL1&productName=g2m&theme=g2m&locale=en&egwHostname=egwglobal.gotomeeting.com&egwIp=216.115.208.230&egwPort=80&egwPort=443&egwPort=8200&startMode=Join&runMode=Terse&buildNumber=5530&meetingId=283268765';
+			}
+		</script>
+	<![endif]-->
+
+    <link rel="stylesheet" href="https://weblibrary.cdn.citrixonline.com/togo/3.1.12/styles/togo.css" />
+    <link rel="stylesheet" href="https://download.citrixonline.com/launcher2/static/styles/v2.css" />
+    <link rel="stylesheet" href="../stylesheets/join-flow/join-flow-bundle.css" />
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="../stylesheets/ie-styles/ie8-bundle.css" />
+    <![endif]-->
+    <!--[if IE 9]>
+    <link rel="stylesheet" href="../stylesheets/ie-styles/ie9-bundle.css" />
+    <![endif]-->
+
+    <script type="text/javascript">
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+        var msViewportStyle = document.createElement("style");
+        var mq = "@@-ms-viewport{width:auto!important}";
+        msViewportStyle.appendChild(document.createTextNode(mq));
+        document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+        }
+    </script>
+    <script src="../js/bower_components/requirejs/require.js"></script>
+    <script>
+        var redirectUrl = 'https://download.citrixonline.com/download.html?brokerServiceSuffix=@ISL1&productName=g2m&theme=g2m&locale=en&egwHostname=egwglobal.gotomeeting.com&egwIp=216.115.208.230&egwPort=80&egwPort=443&egwPort=8200&startMode=Join&runMode=Terse&buildNumber=5530&meetingId=283268765';
+        var html5RedirectURL = 'https://app.gotomeeting.com?meetingId=283268765';
+        var unsupportedOS = false;
+	    var isG2MOrganizer = false;
+        var isSchedulingOrganizer = false;
+        var supportedOS = true;
+        var webappAllowed = true;
+        var audioType = 'voipAndPstn';
+        var meetingId = '283268765';
+        var handoverToken = '';
+        var authToken = '';
+        var adsEnabled = true;
+        var flashEnabled = false;
+        var unsupportedLauncherUrl = 'https://download.citrixonline.com/launcher2/unsupported.html?token=g2m';
+        var sessionTrackingId = '';
+
+        window.requirejs.config({
+            config: {
+				'main-runner': {
+                    html5RedirectURL: html5RedirectURL,
+					isG2MOrganizer: isG2MOrganizer,
+                    adsEnabled: adsEnabled,
+                    redirectUrl: redirectUrl
+				},
+                'launcher/pick-viewer': {
+                    redirectUrl: redirectUrl,
+                    unsupportedOS: unsupportedOS,
+                    html5RedirectURL: html5RedirectURL,
+                    isSchedulingOrganizer: isSchedulingOrganizer,
+                    supportedOS: supportedOS,
+                    webappAllowed: webappAllowed,
+                    audioType: audioType,
+                    handoverToken: handoverToken,
+                    flashEnabled: flashEnabled,
+					meetingId: meetingId,
+					unsupportedLauncherUrl: unsupportedLauncherUrl					
+                },
+                'promotion/endpoint-launcher': {
+	                isG2MOrganizer: isG2MOrganizer,
+					redirectUrl: redirectUrl,
+					meetingId: meetingId,
+                    handoverToken: handoverToken,
+                    authToken: authToken,
+                    sessionTrackingId: sessionTrackingId
+		        },
+                'join/join': {
+                    redirectUrl: redirectUrl,
+                    unsupportedOS: unsupportedOS
+                },
+                'router/router' : {
+                    redirectUrl: redirectUrl
+                }            },
+            baseUrl: '../../launch',
+            paths: {
+                'launch': 'https://download.citrixonline.com' + '/launcher2/static/scripts/app/launcher'
+            }
+        });
+    </script>
+    <script src="../launch/main.js"></script>
+</head>
+
+<body class="launch-body">
+	<!-- Note: the "endpoint" class is set with absolute positioning so that the CSS logic is seperated from the rest of the application, which is setting conflicting stylings for the <html> and <body> tags. -->
+<div class="endpoint" data-bind="css.grey-background: useGreyBackground()">
+    <div class="endpoint-content">
+        <!-- Embedded launcher arrows that point at downloaded items -->
+        <div class="launcher-banner"></div>
+        <div data-bind="compose: activeBanner()"></div>
+        <div data-bind="compose: activeScreen()"></div>
+        <div data-bind="compose:'/public/promotion/footer.html'" ></div>
+    </div>
+</div>
+
+
+    <noscript>
+		<!-- Only displays when JS is disabled -->
+        <div class="no-js-launchHost">
+            <div class="no-js-jumbotron">
+                <img class="logo" src="../public/images/splash.png" />
+                <div class="join-link">
+					<a href="https://download.citrixonline.com/download.html?brokerServiceSuffix=@ISL1&productName=g2m&theme=g2m&locale=en&egwHostname=egwglobal.gotomeeting.com&egwIp=216.115.208.230&egwPort=80&egwPort=443&egwPort=8200&startMode=Join&runMode=Terse&buildNumber=5530&meetingId=283268765">Join Meeting</a>
+                </div>
+            </div>
+        </div>
+    </noscript>
+
+    <div id="applicationHost"></div>
+
+    <div id="webviewerDetails">
+        <div class="embedded-launcher">
+            <a class='embedded-launcher-dismiss'><img src="../public/images/close.png" width="16" height="16"></a>
+            <div id="embedded-launcher-head" class="embedded-launcher-head launcher-head">
+
+                <!--Show "Loading" throbber until we have some UI to show. This happens after the user clicks "download" in-->
+                <!--the Flash UI while the AJAX request to get the token is in progress.-->
+                <!--TODO: Get rid of that AJAX request (when doing the single-page-join)-->
+
+                <img src="../public/images/ajax-loader.gif" width="32" height="32">
+            </div>
+            <div id="embedded-launcher-main" class="embedded-launcher-main launcher-main"></div>
+        </div>
+
+        <div id="flashContent"></div>
+
+        <div class='embedded-launcher-shadow'></div>
+        <div class="launcher-banner"></div>
+    </div>
+
+    <!-- start Mixpanel --><script type="text/javascript">(function(f,b){if(!b.__SV){var a,e,i,g;window.mixpanel=b;b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");
+for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2;a=f.createElement("script");a.type="text/javascript";a.async=!0;a.src="//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";e=f.getElementsByTagName("script")[0];e.parentNode.insertBefore(a,e)}})(document,window.mixpanel||[]);</script><!-- end Mixpanel -->
+
+    <!-- Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-P4Q226" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-P4Q226');</script>
+    <!-- End Google Tag Manager -->
+</body>
+</html>
